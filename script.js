@@ -87,7 +87,7 @@ return;
 
 // 4. codifica a mensagem para URL e abre o whatsApp
 
-const linkZap = `https://wa.me/${numeroTelefone}?text=${encodeURIcomponent(mensagem)}`;
+const linkZap = `https://wa.me/${numeroTelefone}?text=${encodeURIComponent(mensagem)}`;
 
 // Abre em uma nova aba
 window.open(linkZap, '_blank');
