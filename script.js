@@ -56,40 +56,43 @@ btnCancelar.addEventListener('click', () =>{
     }
 });
 
-//MECANICA BOTÃO IMPRIMIR (VALIDAÇÃO DE SAÍDA)
+//MECANICA BOTÃO IMPRIMIR (VERSÃO CORRIGIDA)
 btnImprimir.addEventListener('click', () => {
     const total = totalPicolesDisplay.innerText;
+    
     if (total === "0") {
-        alert("o carrinho está vazio! Adicione produtos para imprimir.");
-return;
+        alert("O carrinho está vazio! Adicione produtos para imprimir.");
+        return;
     }
 
-    //1. configuraçoes do whatsapp
+    // 1. Configurações do WhatsApp
     const numeroTelefone = "5516997820455";
-    let mensagem = `*🍦 NOVO PEDIDO - Distribuidora vitoria* \n`;
+    let mensagem = `*🍦 NOVO PEDIDO - Distribuidora Vitoria*\n`;
     mensagem += `----------------------------------\n`;
 
-    //2. Varedura dos itens selecionados
-    document.querySelectorAll('.item-produto').forEach(produto =>{
+    // 2. Varredura dos itens selecionados
+    document.querySelectorAll('.item-produto').forEach(produto => {
         const qtd = parseInt(produto.querySelector('.contador').innerText);
         const nome = produto.querySelector('.nome-produto').innerText;
 
         if (qtd > 0) {
-           
             mensagem += `✅ ${qtd}x ${nome}\n`;
         }
-    })
+    });
 
-    //3 Adiciona o valor total
+    // 3. Adiciona o valor total
     mensagem += `----------------------------------\n`;
     mensagem += `*Total do Pedido: ${valorTotalDisplay.innerText}*`;
 
+    // 4. Codifica a mensagem para URL (CORRIGIDO: "C" maiúsculo)
+    const linkZap = `https://wa.me/${numeroTelefone}?text=${encodeURIComponent(mensagem)}`;
 
-// 4. codifica a mensagem para URL e abre o whatsApp
-
-const linkZap = `https://wa.me/${numeroTelefone}?text=${encodeURIComponent(mensagem)}`;
-
-// Abre em uma nova aba
-window.open(linkZap, '_blank');
+    // 5. Abre em uma nova aba
+    const abaZap = window.open(linkZap, '_blank');
+    
+    // Verificação de segurança caso o navegador bloqueie o pop-up
+    if (!abaZap) {
+        alert("Por favor, permita que o navegador abra o WhatsApp para concluir o pedido.");
+    }
 
 })
