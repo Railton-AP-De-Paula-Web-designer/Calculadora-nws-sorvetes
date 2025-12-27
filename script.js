@@ -61,10 +61,35 @@ btnImprimir.addEventListener('click', () => {
     const total = totalPicolesDisplay.innerText;
     if (total === "0") {
         alert("o carrinho está vazio! Adicione produtos para imprimir.");
-
-    } else {
-        alert(`Pedido enviado para impressão!\nTotal de Itens: ${total} \n${valorTotalDisplay.innerText}`);
-
-        // Aqui entraremos com a lógica de salvar no banco de 4 KB futurament
+return;
     }
+
+    //1. configuraçoes do whatsapp
+    const numeroTelefone = "5516997820455";
+    let mensagem = `*🍦 NOVO PEDIDO - Distribuidora vitoria* \n`;
+    mensagem += `----------------------------------\n`;
+
+    //2. Varedura dos itens selecionados
+    document.querySelectorAll('.item-produto').forEach(produto =>{
+        const qtd = parseInt(produto.querySelector('.contador').innerText);
+        const nome = produto.querySelector('.nome-produto').innerText;
+
+        if (qtd > 0) {
+           
+            mensagem += `✅ ${qtd}x ${nome}\n`;
+        }
+    })
+
+    //3 Adiciona o valor total
+    mensagem += `----------------------------------\n`;
+    mensagem += `*Total do Pedido: ${valorTotalDisplay.innerText}*`;
+
+
+// 4. codifica a mensagem para URL e abre o whatsApp
+
+const linkZap = `https://wa.me/${numeroTelefone}?text=${encodeURIcomponent(mensagem)}`;
+
+// Abre em uma nova aba
+window.open(linkZap, '_blank');
+
 })
