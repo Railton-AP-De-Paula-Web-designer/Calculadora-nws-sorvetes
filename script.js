@@ -66,7 +66,7 @@ btnImprimir.addEventListener('click', () => {
     }
 
     // 1. Configurações do WhatsApp
-    const numeroTelefone = "5516997820455";
+    const numeroTelefone = "5516996488910";
     let mensagem = `*🍦 NOVO PEDIDO - Distribuidora Vitoria*\n`;
     mensagem += `----------------------------------\n`;
 
