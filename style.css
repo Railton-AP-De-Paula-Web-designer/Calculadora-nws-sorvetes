@@ -231,6 +231,18 @@ flex: 1;
     border-radius: 5px;
 }
 
+/* Efeito Fosco e Riscado para o seu HTML Real */
+.item-produto.status-esgotado {
+    opacity: 0.4;
+    filter: grayscale(1);
+    pointer-events: none; /* Bloqueia os botões + e - */
+}
+
+.item-produto.status-esgotado .nome-produto {
+    text-decoration: line-through;
+}
+
+
 @media (max-width: 768px) {
     .brand-container {
         padding: 80px 10px 15px;

@@ -96,3 +96,24 @@ btnImprimir.addEventListener('click', () => {
     }
 
 })
+
+// Função ajustada para o seu HTML real (Página A)
+function sincronizarVisualEstoque(dadosDoBanco) {
+    // Busca todos os seus itens de produto
+    const itensProdutos = document.querySelectorAll('.item-produto');
+
+    itensProdutos.forEach(item => {
+        // Pega o nome do produto dentro do span .nome-produto
+        const nomeSabor = item.querySelector('.nome-produto').innerText.trim();
+        
+        // Busca o valor no "banco de dados" (objeto JSON)
+        const estoqueAtual = dadosDoBanco[nomeSabor];
+
+        // Se o estoque for exatamente 0, aplica o efeito
+        if (estoqueAtual === 0) {
+            item.classList.add('status-esgotado');
+        } else {
+            item.classList.remove('status-esgotado');
+        }
+    });
+}
