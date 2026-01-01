@@ -256,6 +256,12 @@ flex: 1;
     .brand-name {
         font-size: 1.4rem;
         letter-spacing: 1px;
+        text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+
     }
   .titulo-oficial {
     font-size: 1.6rem;
